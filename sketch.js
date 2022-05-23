@@ -4,20 +4,28 @@ var ballx = 300;
 var bally = 300;
 var ballSize = 45;
 var score = 0;
+var canvas;
+var click1;
+var click2;
+var click3;
+var clickImg;
 var gameState = "L1";
 
 function preload() {
   clean = loadImage('assets/bkclean.png');
   stage = loadImage('assets/bkground.png');
   pink = loadImage('assets/pinkfish.png');
+  title = loadImage('assets/title.png')
+  instructions = loadImage('assets/instructions.png')
   coin = loadImage('assets/fishcoin.png');
-  bkclean = loadImage('assets/bkclean.png');
+  end = loadImage('assets/end.png');
   bk2 = loadImage('assets/bk2.png');
   bk3 = loadImage('assets/bk3.png');
   bk4 = loadImage('assets/bk4.png');
   bk5 = loadImage('assets/bk5.png');
   bk6 = loadImage('assets/bk6.png');
   bk7 = loadImage('assets/bk7.png');
+  keyTheme = loadSound('assets/fishtheme.mp3')
 }
 
 
@@ -34,35 +42,69 @@ function draw() {
   image(pink, mouseX, mouseY, 20, 20);
   background(clean);
   if (gameState == "L1") {
-    levelOne();
-  }
+    titleScreen();
+}
   if (gameState == "L2") {
-    levelTwo();
+      mainControls();
   }
   if (gameState == "L3") {
-    levelThree();
+    levelOne();
   }
   if (gameState == "L4") {
-    levelFour();
+    levelTwo();
   }
   if (gameState == "L5") {
-    levelFive();
+    levelThree();
   }
   if (gameState == "L6") {
-    levelSix();
+    levelFour();
   }
   if (gameState == "L7") {
-    levelSeven();
+    levelFive();
   }
   if (gameState == "L8") {
-    levelEight();
+    levelSix();
   }
   if (gameState == "L9") {
+    levelSeven();
+  }
+  if (gameState == "L10") {
+    levelEight();
+  }
+  if (gameState == "L11") {
     Win();
   }
   text(("Fish Coins Collected: " + score), width / 2, 40);
   image(pink, mouseX, mouseY, 50, 50);
 } // end of draw ===================================
+
+
+function keyPressed(){
+  if (gameState === 'L1') {
+    if (key === 'F' || key === 'f') {
+      gameState = 'L2';
+    }
+}
+if (gameState === 'L2') {
+  if (key === 'G' || key === 'g') {
+    gameState = 'L3';
+    keyTheme.play()
+  }
+}
+if (gameState === 'L11') {
+  if (key === 'G' || key === 'g') {
+    gameState = 'L1';
+  }
+}
+}
+
+function titleScreen(){
+  background(title);
+}
+
+function mainControls(){
+  background(instructions);
+}
 
 function levelOne() {
   background(clean);
@@ -75,7 +117,7 @@ function levelOne() {
     score = score + 1;
   }
   if (score >= 5) {
-    gameState = "L2";
+    gameState = "L4";
   }
 
   image(coin, ballx, bally, ballSize, ballSize);
@@ -94,7 +136,7 @@ function levelTwo() {
     score = score + 1;
   }
   if (score >= 10) {
-    gameState = "L3";
+    gameState = "L5";
   }
   //line(ballx,bally, mouseX, mouseY);
   image(coin, ballx, bally, ballSize, ballSize);
@@ -113,7 +155,7 @@ function levelThree() {
   }
 
   if (score >= 15) {
-    gameState = "L4";
+    gameState = "L6";
   }
   //line(ballx,bally, mouseX, mouseY);
   image(coin, ballx, bally, ballSize, ballSize);
@@ -133,7 +175,7 @@ function levelFour() {
   }
 
   if (score >= 20) {
-    gameState = "L5";
+    gameState = "L7";
   }
   //line(ballx,bally, mouseX, mouseY);
   image(coin, ballx, bally, ballSize, ballSize);
@@ -153,7 +195,7 @@ function levelFive() {
   }
 
   if (score >= 25) {
-    gameState = "L6";
+    gameState = "L8";
   }
   //line(ballx,bally, mouseX, mouseY);
   image(coin, ballx, bally, ballSize, ballSize);
@@ -173,7 +215,7 @@ function levelSix() {
   }
 
   if (score >= 25) {
-    gameState = "L7";
+    gameState = "L9";
   }
   //line(ballx,bally, mouseX, mouseY);
   image(coin, ballx, bally, ballSize, ballSize);
@@ -185,7 +227,7 @@ function levelSeven() {
   text("Level 7", width / 2, 70);
   fill(255, 255, 255);
   var distToBall = dist(ballx, bally, mouseX, mouseY);
-  if (distToBall < ballSize / 4) {
+  if (distToBall < ballSize / 5) {
     ballx = random(width);
     bally = random(height);
     score = score + 1;
@@ -193,7 +235,7 @@ function levelSeven() {
   }
 
   if (score >= 30) {
-    gameState = "L8";
+    gameState = "L10";
   }
   //line(ballx,bally, mouseX, mouseY);
   image(coin, ballx, bally, ballSize, ballSize);
@@ -205,7 +247,7 @@ function levelEight() {
   fill(255, 255, 255);
   text("Level 8", width / 2, 70);
   var distToBall = dist(ballx, bally, mouseX, mouseY);
-  if (distToBall < ballSize / 4) {
+  if (distToBall < ballSize / 6) {
     ballx = random(width);
     bally = random(height);
     score = score + 1;
@@ -213,7 +255,7 @@ function levelEight() {
   }
 
   if (score >= 35) {
-    gameState = "L9";
+    gameState = "L11";
   }
   //line(ballx,bally, mouseX, mouseY);
   image(coin, ballx, bally, ballSize, ballSize);
@@ -221,11 +263,5 @@ function levelEight() {
 } // end of Level 8 ================================
 
 function Win() {
-  background(coin);
-  fill(255, 255, 255);
-  textSize(25);
-  text("Nice! You win!", width / 2, 70);
-  text("But with all the trash in the sea...", width / 2, 100)
-  text("did you really win?", width / 2, 130);
-
+  background(end);
 }

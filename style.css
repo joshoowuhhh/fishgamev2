@@ -1,74 +1,59 @@
-
-.buttonContainer{
+.buttonContainer {
   position: relative;
   text-align: center;
   padding: 2rem;
   margin: auto;
 }
 
-
-
-html{
+html {
   background-image: url("assets/fishes.png");
   text-align: center;
 }
 
-div{
+div {
   background-color: white;
 }
-
-
-
-/* statement screen */
 
 h1 {
   background-color: white;
   font-size: 4rem;
   margin: 50px auto 0 auto;
   font-family: 'Times New Roman', bold;
-  color:#a89a6d;
+  color: #a89a6d;
   line-height: 1.5;
 }
 
 
-/* #image{
-  position: absolute;
-  scale: 10;
-} */
-
-
-
-#statement{
-    background-color: white;
-    padding: 20px;
-    font-family: 'Times New Roman', sans-serif;
-    color:#a89a6d;
-    font-size:27px;
-    margin: auto 25%;
-    position: relative;
-
+#statement {
+  background-color: white;
+  padding: 20px;
+  font-family: 'Times New Roman', sans-serif;
+  color: #a89a6d;
+  font-size: 27px;
+  margin: auto 35%;
+  position: relative;
 }
 
-#help{
-background-color: white;
-padding: 20px;
-font-family: 'Times New Roman', sans-serif;
-color:#a89a6d;
-font-size:27px;
-margin: auto 25%;
-position: relative;
+#help {
+  background-color: white;
+  padding: 20px;
+  font-family: 'Times New Roman', sans-serif;
+  color: #a89a6d;
+  font-size: 27px;
+  margin: auto 35%;
+  position: relative;
 }
 
 .backbutton {
-background:    #a89a6d;
-border-radius: 15px;
-margin: 50px;
-padding:       45px;
-color:         white;
-display:       inline-block;
-font:          normal bold 25px/1 "Times New Roman", sans-serif;
-text-align:    center;
-bottom: 110px;
-left: 830px;
-text-decoration: none;
+  background: #a89a6d;
+  border-radius: 15px;
+  margin: 50px;
+  padding: 45px;
+  color: white;
+  display: inline-block;
+  font: normal bold 25px/1 "Times New Roman", sans-serif;
+  text-align: center;
+  bottom: 110px;
+  left: 830px;
+  text-decoration: none;
 }
